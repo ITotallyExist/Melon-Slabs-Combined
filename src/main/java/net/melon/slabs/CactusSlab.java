@@ -22,7 +22,7 @@ public class CactusSlab extends CactusBlock{
 
     protected static final VoxelShape COLLISION_SHAPE;
 
-    public CactusSlab() {
+    public CactusSlab() {//hi
         super(FabricBlockSettings.copy(Blocks.CACTUS));
         this.setDefaultState((BlockState)((BlockState)this.stateManager.getDefaultState()).with(AGE, 0));
     }
