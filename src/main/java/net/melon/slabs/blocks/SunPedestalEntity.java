@@ -2,10 +2,14 @@ package net.melon.slabs.blocks;
 
 import org.jetbrains.annotations.Nullable;
 
+import net.fabricmc.fabric.api.block.entity.BlockEntityClientSerializable;
 import net.melon.slabs.entity.DisplayItemEntity;
 import net.melon.slabs.items.MelonSlabsItems;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.render.VertexConsumerProvider;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.inventory.Inventories;
@@ -21,7 +25,7 @@ import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 
-public class SunPedestalEntity extends BlockEntity implements ImplementedInventory, SidedInventory{
+public class SunPedestalEntity extends BlockEntity implements ImplementedInventory, SidedInventory, BlockEntityClientSerializable{
     private final DefaultedList<ItemStack> items = DefaultedList.ofSize(1, ItemStack.EMPTY);
     // private int displayEntityId;
     private DisplayItemEntity displayItemEntity = new DisplayItemEntity(world, 0, 0, 0, ItemStack.EMPTY);
@@ -70,7 +74,6 @@ public class SunPedestalEntity extends BlockEntity implements ImplementedInvento
     public void fromTag(BlockState state, CompoundTag tag) {
         super.fromTag(state, tag);
         Inventories.fromTag(tag,items);
-
         // displayItemEntity.fromTag(tag);
         // displayEntityId = ((IntTag)tag.get("displayEntityId")).getInt();
     }
@@ -79,7 +82,7 @@ public class SunPedestalEntity extends BlockEntity implements ImplementedInvento
     public void setLocation(World world, BlockPos pos) {
         this.world = world;
         this.pos = pos.toImmutable();
-        world.getBlockTickScheduler().schedule(pos, MelonSlabsBlocks.SUN_PEDESTAL, 2);
+        //world.getBlockTickScheduler().schedule(pos, MelonSlabsBlocks.SUN_PEDESTAL, 2);
     }
  
     // @Override
@@ -119,8 +122,6 @@ public class SunPedestalEntity extends BlockEntity implements ImplementedInvento
     //these next functions make sure to update the state whenever an item is added or removed
     @Override
     public ItemStack removeStack(int slot, int count) {
-        scheduleTick();
-
         ItemStack result = Inventories.splitStack(getItems(), slot, count);
         if (!result.isEmpty()) {
             markDirty();
@@ -131,16 +132,13 @@ public class SunPedestalEntity extends BlockEntity implements ImplementedInvento
     
     @Override
     public ItemStack removeStack(int slot) {
-        scheduleTick();
-
-        return Inventories.removeStack(getItems(), slot);
+        ItemStack result = Inventories.removeStack(getItems(), slot);
+        return result;
     }
  
     
     @Override
     public void setStack(int slot, ItemStack stack) {
-        scheduleTick();
-
         getItems().set(slot, stack);
         if (stack.getCount() > getMaxCountPerStack()) {
             stack.setCount(getMaxCountPerStack());
@@ -155,5 +153,18 @@ public class SunPedestalEntity extends BlockEntity implements ImplementedInvento
         scheduleTick();
 
         getItems().clear();
+    }
+
+    @Override
+    public void fromClientTag(CompoundTag tag) {
+        // TODO Auto-generated method stub
+        Inventories.fromTag(tag,items);
+    }
+
+    @Override
+    public CompoundTag toClientTag(CompoundTag tag) {
+        Inventories.toTag(tag,items);
+        return(tag);
+        // displayItemEntity.fromTag(tag)
     }
 }

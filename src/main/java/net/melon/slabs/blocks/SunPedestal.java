@@ -75,7 +75,7 @@ public class SunPedestal extends BlockWithEntity{
     }
 
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        ((SunPedestalEntity)world.getBlockEntity(pos)).displayInventory(world, pos);
+        //((SunPedestalEntity)world.getBlockEntity(pos)).displayInventory(world, pos);
     }
 
     @Override
@@ -101,12 +101,14 @@ public class SunPedestal extends BlockWithEntity{
             }
             return ActionResult.FAIL;
         } else{
-            if (blockEntity instanceof SunPedestalEntity){
+            if (blockEntity instanceof SunPedestalEntity && blockEntity.getWorld().isClient){
                 if (itemStack.isEmpty() && !((SunPedestalEntity)blockEntity).getStack(0).isEmpty()){
+                    ((SunPedestalEntity)blockEntity).removeStack(0);
                     return ActionResult.SUCCESS;
                 }
 
                 if (((SunPedestalEntity)blockEntity).getStack(0).isEmpty()){
+                    ((SunPedestalEntity)blockEntity).setStack(0, itemStack);
                     return ActionResult.SUCCESS;
                 }
             }
