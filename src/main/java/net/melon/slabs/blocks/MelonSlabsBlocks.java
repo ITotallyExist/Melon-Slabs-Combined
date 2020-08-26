@@ -25,11 +25,13 @@ public class MelonSlabsBlocks {
     public static final Block LIGHTNING_COLLECTOR = new LightningCollector();
     public static final Block SUN_PEDESTAL = new SunPedestal();
     public static final Block MIRROR = new Mirror();
+    public static final Block GLASS_CASE = new GlassCase();
 
     //block entities
     public static BlockEntityType<LightningCollectorEntity> LIGHTNING_COLLECTOR_ENTITY;
     public static BlockEntityType<SunPedestalEntity> SUN_PEDESTAL_ENTITY;
     public static BlockEntityType<MirrorEntity> MIRROR_ENTITY;
+    public static BlockEntityType<GlassCaseEntity> GLASS_CASE_ENTITY;
 
     public static void registerBlocks(){
         Registry.register(Registry.BLOCK, "melonslabs:cactus_slab", CACTUS_SLAB);
@@ -48,10 +50,12 @@ public class MelonSlabsBlocks {
         Registry.register(Registry.BLOCK, "melonslabs:lightning_collector", LIGHTNING_COLLECTOR);
         Registry.register(Registry.BLOCK, "melonslabs:sun_pedestal", SUN_PEDESTAL);
         Registry.register(Registry.BLOCK, "melonslabs:mirror", MIRROR);
+        Registry.register(Registry.BLOCK, "melonslabs:glass_case", GLASS_CASE);
 
         LIGHTNING_COLLECTOR_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "melonslabs:lightning_collector", BlockEntityType.Builder.create(LightningCollectorEntity::new, LIGHTNING_COLLECTOR).build(null));
         SUN_PEDESTAL_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "melonslabs:sun_pedestal", BlockEntityType.Builder.create(SunPedestalEntity::new, SUN_PEDESTAL).build(null));
         MIRROR_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "melonslabs:mirror", BlockEntityType.Builder.create(MirrorEntity::new, MIRROR).build(null));
+        GLASS_CASE_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "melonslabs:glass_case", BlockEntityType.Builder.create(GlassCaseEntity::new, GLASS_CASE).build(null));
     }
 
     public static void putRenderLayers(){
@@ -60,6 +64,7 @@ public class MelonSlabsBlocks {
         BlockRenderLayerMap.INSTANCE.putBlock(MelonSlabsBlocks.JILL_O_SLAB, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(MelonSlabsBlocks.LIGHTNING_COLLECTOR, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(MelonSlabsBlocks.MIRROR, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(MelonSlabsBlocks.GLASS_CASE, RenderLayer.getCutout());
         // BlockRenderLayerMap.INSTANCE.putBlock(MelonSlabsBlocks.LIGHTNING_ROD, RenderLayer.getCutout());
     }
 }

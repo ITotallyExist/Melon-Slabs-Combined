@@ -27,7 +27,26 @@ public class MirrorEntity extends BlockEntity implements BlockEntityClientSerial
     public void activate(Direction dir) {
         this.direction = dir;
         this.active = true;
+        
+        BlockEntity entity = this.world.getBlockEntity(pos.offset(dir, 4));
+        if (entity instanceof GlassCaseEntity){
+            ((GlassCaseEntity) entity).activate(dir);
+        }
+
+        if (!this.world.isClient()){this.sync();}
+
         this.world.getBlockTickScheduler().schedule(pos, MelonSlabsBlocks.MIRROR, 200);
+    }
+
+    public void deActivate(){
+        this.active = false;
+        BlockEntity entity = this.world.getBlockEntity(pos.offset(this.direction, 4));
+
+        if (entity instanceof GlassCaseEntity){
+            ((GlassCaseEntity) entity).deActivate(this.direction);
+        }
+
+        if (!this.world.isClient()){this.sync();}
     }
 
     // public void sync (){

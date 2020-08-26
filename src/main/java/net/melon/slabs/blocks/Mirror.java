@@ -42,6 +42,21 @@ public class Mirror extends BlockWithEntity {
         return BlockRenderType.MODEL;
     }
 
+    //This drop inventory onto ground when block broken
+    @Override
+    public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
+        if (state.getBlock() != newState.getBlock()) {
+            BlockEntity blockEntity = world.getBlockEntity(pos.offset(state.get(FACING), 4));
+
+            if (blockEntity instanceof GlassCaseEntity){
+                ((GlassCaseEntity) blockEntity).deActivate(state.get(FACING));
+            }
+            
+            super.onStateReplaced(state, world, pos, newState, moved);
+        }
+    }
+
+
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(FACING);
@@ -66,9 +81,8 @@ public class Mirror extends BlockWithEntity {
     }
 
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        MirrorEntity entity = (MirrorEntity)world.getBlockEntity(pos);
-        entity.active = false;
-        entity.sync();
+        ((MirrorEntity)world.getBlockEntity(pos)).deActivate();
+        
     }
 
     static {

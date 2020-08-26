@@ -22,9 +22,9 @@ public class PedestalBlockEntityRenderer extends BlockEntityRenderer<SunPedestal
     public void render(SunPedestalEntity blockEntity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
         matrices.push();
         // Calculate the current offset in the y value
-        double offset = Math.sin((blockEntity.getWorld().getTime() + tickDelta) / 8.0) / 32.0;
+        double offset = Math.sin((blockEntity.getWorld().getTime() + tickDelta) / 8.0) / 8.0;
         // Move the item
-        matrices.translate(0.5, 1.25 + offset, 0.5);
+        matrices.translate(0.5, 1.4 + offset, 0.5);
  
         // Rotate the item
         matrices.multiply(Vector3f.POSITIVE_Y.getDegreesQuaternion((blockEntity.getWorld().getTime() + tickDelta) * 4));

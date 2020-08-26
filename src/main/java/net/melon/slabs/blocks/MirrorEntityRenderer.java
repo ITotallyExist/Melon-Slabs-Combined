@@ -17,6 +17,7 @@ import net.minecraft.client.texture.SpriteAtlasTexture;
 import net.minecraft.client.texture.TextureManager;
 import net.minecraft.client.util.SpriteIdentifier;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.client.util.math.Vector3f;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
@@ -35,32 +36,32 @@ public class MirrorEntityRenderer extends BlockEntityRenderer<MirrorEntity> {
 
         forwardsW.add(new ModelPart(16,16,0,0));
         forwardsW.add(new ModelPart(16,16,0,0));
-        forwardsW.forEach((x -> {x.setPivot(-55.5F, 4.7F, 8.0f);}));
+        forwardsW.forEach((x -> {x.setPivot(-56.5F, 10.0F, 8.0f);}));
         forwardsW.forEach((x -> {x.pitch = -0.7854F;}));
-        forwardsW.forEach((x -> {x.roll = 0.08f;}));
-        forwardsW.forEach((x -> {x.setTextureOffset(0,0).addCuboid(-0.5F, -0.5F, -0.5F, 63.5F, 1.0F, 1.0F, 0.0F, false);}));
+        // forwardsW.forEach((x -> {x.roll = 0.08f;}));
+        forwardsW.forEach((x -> {x.setTextureOffset(0,0).addCuboid(-0.5F, -0.5F, -0.5F, 62.5F, 1.0F, 1.0F, 0.0F, false);}));
 
         forwardsN.add(new ModelPart(16,16,0,0));
         forwardsN.add(new ModelPart(16,16,0,0));
         forwardsN.forEach((x -> {x.setPivot(8.0F, 10.0F, 8.0f);}));
         // forwardsN.forEach((x -> {x.pitch = -0.7854F;}));
-        forwardsN.forEach((x -> {x.pitch = 0.08f;}));
+        // forwardsN.forEach((x -> {x.pitch = 0.08f;}));
         forwardsN.forEach((x -> {x.yaw = 3.14159265f;}));
-        forwardsN.forEach((x -> {x.setTextureOffset(0,0).addCuboid(-0.0F, -0.5F, -0.5F, 1.0F, 1.0F, 63.5F, 0.0F, false);}));
+        forwardsN.forEach((x -> {x.setTextureOffset(0,0).addCuboid(-0.5F, -0.5F, -0.5F, 1.0F, 1.0F, 63.5F, 0.0F, false);}));
 
         forwardsE.add(new ModelPart(16,16,0,0));
         forwardsE.add(new ModelPart(16,16,0,0));
         forwardsE.forEach((x -> {x.setPivot(8.5F, 10.0F, 8.0f);}));
         forwardsE.forEach((x -> {x.pitch = -0.7854F;}));
-        forwardsE.forEach((x -> {x.roll = -0.08f;}));
-        forwardsE.forEach((x -> {x.setTextureOffset(0,0).addCuboid(-0.5F, -0.5F, -0.5F, 63.5F, 1.0F, 1.0F, 0.0F, false);}));
+        // forwardsE.forEach((x -> {x.roll = -0.08f;}));
+        forwardsE.forEach((x -> {x.setTextureOffset(0,0).addCuboid(-0.5F, -0.5F, -0.5F, 63.0F, 1.0F, 1.0F, 0.0F, false);}));
 
         forwardsS.add(new ModelPart(16,16,0,0));
         forwardsS.add(new ModelPart(16,16,0,0));
         forwardsS.forEach((x -> {x.setPivot(8.0F, 10.0F, 8.0f);}));
         // forwardsS.forEach((x -> {x.pitch = -0.7854F;}));
-        forwardsS.forEach((x -> {x.pitch = 0.08f;}));
-        forwardsS.forEach((x -> {x.setTextureOffset(0,0).addCuboid(0.0F, -0.5F, -0.5F, 1.0F, 1.0F, 63.5F, 0.0F, false);}));
+        // forwardsS.forEach((x -> {x.pitch = 0.08f;}));
+        forwardsS.forEach((x -> {x.setTextureOffset(0,0).addCuboid(-0.5F, -0.5F, -0.5F, 1.0F, 1.0F, 63.5F, 0.0F, false);}));
 
         // forwards = new ModelPart(16,16,0,0);
         // forwards.setPivot(-55.5F, 4.2F, 8.0f);
@@ -87,8 +88,8 @@ public class MirrorEntityRenderer extends BlockEntityRenderer<MirrorEntity> {
     public void render(MirrorEntity entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {  
 
         if (entity.active){
-            float offset = ((entity.getWorld().getTime() + tickDelta) * ROTATION_SPEED)%6.28318531f;
 
+            float offset = ((entity.getWorld().getTime() + tickDelta) * ROTATION_SPEED)%6.28318531f;
 
             up.get(0).yaw = offset;
             up.get(1).yaw = -offset;
