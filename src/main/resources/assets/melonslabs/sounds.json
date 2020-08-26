@@ -1,8 +1,22 @@
 {
-    "frankenmelon_hurt": {
-      "subtitle": "subtitles.melonslabs.frankenmelon_hurt",
-      "sounds": [
-        "melonslabs:frankenmelon_hurt"
-      ]
-    }
+  "frankenmelon_hurt": {
+    "subtitle": "subtitles.melonslabs.frankenmelon_hurt",
+    "sounds": [
+      "melonslabs:frankenmelon_hurt",
+      "melonslabs:psh",
+      "melonslabs:psh_long"
+    ]
+  },
+  "psh": {
+    "subtitle": "subtitles.melonslabs.psh",
+    "sounds": [
+      "melonslabs:psh"
+    ]
+  },
+  "psh_long": {
+    "subtitle": "subtitles.melonslabs.psh_long",
+    "sounds": [
+      "melonslabs:psh_long"
+    ]
   }
+}

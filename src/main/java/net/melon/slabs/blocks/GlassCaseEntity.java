@@ -1,8 +1,10 @@
 package net.melon.slabs.blocks;
 
 import net.fabricmc.fabric.api.block.entity.BlockEntityClientSerializable;
+import net.melon.slabs.sounds.MelonSlabsSounds;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.math.Direction;
 
 public class GlassCaseEntity extends BlockEntity implements BlockEntityClientSerializable {
@@ -33,20 +35,30 @@ public class GlassCaseEntity extends BlockEntity implements BlockEntityClientSer
     }
 
     public void activate(Direction direction) {
+        boolean playSound = false;
         if (direction == Direction.NORTH) {
+            if (!directionsActivated[0]){playSound = true;}
             directionsActivated[0] = true;
         }
         if (direction == Direction.EAST) {
+            if (!directionsActivated[1]){playSound = true;}
             directionsActivated[1] = true;
         }
         if (direction == Direction.SOUTH) {
+            if (!directionsActivated[2]){playSound = true;}
             directionsActivated[2] = true;
         }
         if (direction == Direction.WEST) {
+            if (!directionsActivated[3]){playSound = true;}
             directionsActivated[3] = true;
         }
+        if (!this.world.isClient()){
+            if (playSound){
+                this.world.playSound(null, pos, MelonSlabsSounds.PSH_LONG_SOUND_EVENT, SoundCategory.BLOCKS, this.getSize()/3.0f, 1.0f);
+            }
 
-        if (!this.world.isClient()){this.sync();}
+            this.sync();
+        }
     }
 
     public int getSize() {

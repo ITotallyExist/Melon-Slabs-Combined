@@ -66,9 +66,6 @@ public class SunPedestal extends BlockWithEntity{
             BlockEntity blockEntity = world.getBlockEntity(pos);
             if (blockEntity instanceof SunPedestalEntity) {
                 ItemScatterer.spawn(world, pos, (SunPedestalEntity)blockEntity);
-                if(!world.isClient){
-                    ((SunPedestalEntity)blockEntity).removeDisplay((ServerWorld)world, pos);
-                }
             }
             super.onStateReplaced(state, world, pos, newState, moved);
         }
@@ -174,11 +171,10 @@ public class SunPedestal extends BlockWithEntity{
     public boolean canActivateMultiblock(World world, BlockPos pos){
         ItemStack item = ((SunPedestalEntity) world.getBlockEntity(pos)).getStack(0);
 
-        if (item.hasTag()){
-            if (item.getTag().asString().contains("minecraft:melonslabs_living") && this.getMultiblockIntact(world, pos)){
-                return true;
-            }
+        if (((SunPedestalEntity) world.getBlockEntity(pos)).hasLivingPotion() && this.getMultiblockIntact(world, pos)){
+            return true;
         }
+        
         return false;
     }
 

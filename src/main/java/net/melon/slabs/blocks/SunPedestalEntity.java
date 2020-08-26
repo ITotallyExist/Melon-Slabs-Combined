@@ -37,38 +37,15 @@ public class SunPedestalEntity extends BlockEntity implements ImplementedInvento
         this.getWorld().getBlockTickScheduler().schedule(pos, MelonSlabsBlocks.SUN_PEDESTAL, 1);
     }
 
-    public void displayInventory(ServerWorld world, BlockPos pos){
-        SunPedestalEntity blockEntity = (SunPedestalEntity)world.getBlockEntity(pos);
-        DisplayItemEntity displayItem = new DisplayItemEntity(world, (double)pos.getX() + 0.5D, (double)pos.getY() + 1.1D, (double)pos.getZ() + 0.5D, blockEntity.getItems().get(0));
-        this.removeDisplay(world, pos);
-        displayItemEntity = displayItem;
-        world.spawnEntity(displayItem);
-        // displayEntityId = displayItem.getEntityId();
-    }
-
-    public void removeDisplay(World world, BlockPos pos){
-        // if (displayEntityId != -1){
-        //     world.removeEntity(world.getEntityById(displayEntityId));
-        //     displayEntityId = -1;
-        // }
-        if (!world.isClient){
-            try{
-                ((ServerWorld)world).removeEntity(displayItemEntity);
-            }catch(Exception e){
-
+    public boolean hasLivingPotion(){
+        if (getStack(0).hasTag()){
+            if (getStack(0).getTag().asString().contains("minecraft:melonslabs_living")){
+                return true;
             }
-            // System.out.println(world.getOtherEntities((Entity)this, new Box(pos.up()), (x -> true)));
-            world.getEntitiesByClass(DisplayItemEntity.class, new Box(pos.up()), (x -> true)).forEach(item -> {
-                ((ServerWorld)world).removeEntity(item);
-                System.out.println("deleted item yo");
-            });
-            // world.getE(, new Box(pos.up()), (x -> true)).forEach(item -> {
-            //     world.removeEntity(item);
-            //     System.out.println("deleted item yo");
-            // });
         }
+        return false;
     }
-
+    
     //implementedInventory
     @Override
     public void fromTag(BlockState state, CompoundTag tag) {

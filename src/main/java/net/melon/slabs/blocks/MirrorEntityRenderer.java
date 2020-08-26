@@ -36,7 +36,7 @@ public class MirrorEntityRenderer extends BlockEntityRenderer<MirrorEntity> {
 
         forwardsW.add(new ModelPart(16,16,0,0));
         forwardsW.add(new ModelPart(16,16,0,0));
-        forwardsW.forEach((x -> {x.setPivot(-56.5F, 10.0F, 8.0f);}));
+        forwardsW.forEach((x -> {x.setPivot(-54.5F, 10.0F, 8.0f);}));
         forwardsW.forEach((x -> {x.pitch = -0.7854F;}));
         // forwardsW.forEach((x -> {x.roll = 0.08f;}));
         forwardsW.forEach((x -> {x.setTextureOffset(0,0).addCuboid(-0.5F, -0.5F, -0.5F, 62.5F, 1.0F, 1.0F, 0.0F, false);}));

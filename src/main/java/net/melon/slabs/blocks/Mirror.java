@@ -17,6 +17,7 @@ import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.DirectionProperty;
+import net.minecraft.text.LiteralText;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
@@ -75,8 +76,23 @@ public class Mirror extends BlockWithEntity {
     }
 
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        MirrorEntity blockEntity = ((MirrorEntity)world.getBlockEntity(pos));
-        blockEntity.activate(state.get(FACING));
+        BlockPos pedestalPos = pos.offset(state.get(FACING), 4).down();
+        BlockState pedestal = world.getBlockState(pedestalPos);
+        if (pedestal.isOf(MelonSlabsBlocks.SUN_PEDESTAL)){
+            if(((SunPedestal)pedestal.getBlock()).getMultiblockIntact(world, pedestalPos)){
+                if (((SunPedestal)pedestal.getBlock()).canActivateMultiblock(world, pedestalPos)){
+                    MirrorEntity blockEntity = ((MirrorEntity)world.getBlockEntity(pos));
+                    blockEntity.activate(state.get(FACING));
+                } else{
+                    player.sendMessage(new LiteralText("No living potion in pedestal"), true);
+                }
+            } else{
+                player.sendMessage(new LiteralText("Multiblock incomplete"), true);
+            }
+        } else{
+            player.sendMessage(new LiteralText("Multiblock incomplete"), true);
+        }
+        
         return ActionResult.SUCCESS;
     }
 

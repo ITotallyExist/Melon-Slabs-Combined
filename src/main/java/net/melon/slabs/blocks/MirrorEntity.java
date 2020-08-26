@@ -35,7 +35,7 @@ public class MirrorEntity extends BlockEntity implements BlockEntityClientSerial
 
         if (!this.world.isClient()){this.sync();}
 
-        this.world.getBlockTickScheduler().schedule(pos, MelonSlabsBlocks.MIRROR, 200);
+        this.world.getBlockTickScheduler().schedule(pos, MelonSlabsBlocks.MIRROR, 75);
     }
 
     public void deActivate(){
