@@ -4,6 +4,7 @@ import java.util.Random;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.melon.slabs.entity.DisplayItemEntity;
+import net.melon.slabs.items.MelonSlabsItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
@@ -19,6 +20,8 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.util.ActionResult;
@@ -75,6 +78,20 @@ public class SunPedestal extends BlockWithEntity{
         //((SunPedestalEntity)world.getBlockEntity(pos)).displayInventory(world, pos);
     }
 
+    public void finishRitual(World world, BlockPos pos){
+        if (!world.isClient){        
+        BlockEntity pedestalEntity = world.getBlockEntity(pos);
+            if (pedestalEntity instanceof SunPedestalEntity){
+                ((SunPedestalEntity) pedestalEntity).setStack(0, new ItemStack(MelonSlabsItems.SUN_BOTTLE, 1));
+                ((SunPedestalEntity) pedestalEntity).sync();
+                Random rd = new Random();
+                world.playSound(null, pos, SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.BLOCKS, 0.8f, 0.5f + rd.nextFloat());
+                world.playSound(null, pos, SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.BLOCKS, 1f, 0.5f + rd.nextFloat());
+                world.playSound(null, pos, SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.BLOCKS, 1.2f, 0.5f + rd.nextFloat());
+            }
+        }
+    }
+
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         BlockEntity blockEntity = world.getBlockEntity(pos);
@@ -117,6 +134,7 @@ public class SunPedestal extends BlockWithEntity{
         if (!world.isSkyVisible(pos.up(2))){return false;}
 
         if (!world.getBlockState(pos.up()).isOf(MelonSlabsBlocks.GLASS_CASE)){return false;}
+        if (!world.getBlockState(pos).isOf(MelonSlabsBlocks.SUN_PEDESTAL)){return false;}
 
 
         //north arm

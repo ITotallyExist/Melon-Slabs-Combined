@@ -58,6 +58,14 @@ public class GlassCaseEntity extends BlockEntity implements BlockEntityClientSer
             }
 
             this.sync();
+
+            if (this.getSize() == 4){
+                if(world.getBlockState(pos.down()).isOf(MelonSlabsBlocks.SUN_PEDESTAL)){
+                    if(((SunPedestal)MelonSlabsBlocks.SUN_PEDESTAL).canActivateMultiblock(world, pos.down())){
+                        ((SunPedestal)MelonSlabsBlocks.SUN_PEDESTAL).finishRitual(world, pos.down());
+                    }
+                }
+            }
         }
     }
 

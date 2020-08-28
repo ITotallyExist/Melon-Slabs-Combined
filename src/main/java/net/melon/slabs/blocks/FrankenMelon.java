@@ -188,7 +188,7 @@ public class FrankenMelon extends Block{
     private void getHurt (BlockState state, World world, BlockPos pos){
         if (!world.isClient && state.get(LIT)) {
             Random rd = new Random();
-            world.playSound(null, pos, MelonSlabsSounds.FRANKENMELON_HURT_EVENT, SoundCategory.BLOCKS, 0.2f + rd.nextFloat()/10f, 0.8f + + rd.nextFloat()/2.5f);
+            world.playSound(null, pos, MelonSlabsSounds.FRANKENMELON_HURT_EVENT, SoundCategory.BLOCKS, 0.2f + rd.nextFloat()/10f, 0.8f + rd.nextFloat()/2.5f);
         }
     }
 

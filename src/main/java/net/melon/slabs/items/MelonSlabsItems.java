@@ -38,8 +38,9 @@ public class MelonSlabsItems {
         public static final Item PUMPKIN_SLICE = new Item(new Item.Settings().group(GROUP).food(new FoodComponent.Builder().hunger(1).saturationModifier(0.3f).snack().build()));
         public static final Item COOKED_PUMPKIN_SLICE = new Item(new Item.Settings().group(GROUP).food(new FoodComponent.Builder().hunger(4).saturationModifier(2.4f).build()));
         
-        //lightning_bottle
+        //elemental_bottles
         public static final Item LIGHTNING_BOTTLE = new LightningBottleItem(new Item.Settings().group(GROUP).rarity(Rarity.EPIC));
+        public static final Item SUN_BOTTLE = new SunBottleItem(new Item.Settings().group(GROUP).rarity(Rarity.EPIC));
 
         //register items
         public static void registerItems(){
@@ -63,5 +64,6 @@ public class MelonSlabsItems {
             Registry.register(Registry.ITEM, "melonslabs:sun_pedestal", SUN_PEDESTAL);
             Registry.register(Registry.ITEM, "melonslabs:mirror", MIRROR);
             Registry.register(Registry.ITEM, "melonslabs:glass_case", GLASS_CASE);
+            Registry.register(Registry.ITEM, "melonslabs:sun_bottle", SUN_BOTTLE);
         }
 }
