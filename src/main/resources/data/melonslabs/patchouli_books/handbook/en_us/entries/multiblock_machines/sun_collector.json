@@ -1,0 +1,44 @@
+{
+	"name": "text.melonslabs.patchouli.multiblock_machines.sun_collector.title",
+	"icon": "melonslabs:mirror",
+	"category": "multiblock_machines",
+	"sortnum": 0,
+	"pages": [
+		{
+            "type": "text",
+            "text": "text.melonslabs.patchouli.multiblock_machines.sun_collector.description"
+        },
+        {
+            "type": "text",
+            "text": "text.melonslabs.patchouli.multiblock_machines.sun_collector.description2"
+        },
+        {
+            "type": "multiblock",
+            "multiblock": {
+                "mapping": {
+                    "N": "melonslabs:mirror[facing=north]",
+                    "E": "melonslabs:mirror[facing=east]",
+                    "S": "melonslabs:mirror[facing=south]",
+                    "W": "melonslabs:mirror[facing=west]",
+                    "G": "melonslabs:glass_case",
+                    "0": "melonslabs:sun_pedestal"
+                },
+                "pattern": [
+                    ["____E____","_________","_________","_________","S___G___N","_________","_________","_________","____W____"],
+                    ["_________","_________","_________","_________","____0____","_________","_________","_________","_________"]
+                ]
+            }
+		},
+		{
+            "type": "crafting",
+            "recipe": "melonslabs:glass_case",
+            "recipe2": "melonslabs:sun_pedestal",
+            "anchor": "recipes"
+        },
+        {
+            "type": "crafting",
+            "recipe": "melonslabs:mirror",
+            "anchor": "recipes2"
+		}
+	]
+}

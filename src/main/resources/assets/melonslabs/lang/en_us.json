@@ -22,7 +22,7 @@
     "item.melonslabs.pumpkin_slice": "Pumpkin Slice",
     "item.melonslabs.cooked_pumpkin_slice": "Cooked Pumpkin Slice",
     "item.melonslabs.lightning_bottle": "Bottled Lightning",
-    "item.melonslabs.sun_bottle": "Bottled Sun",
+    "item.melonslabs.sun_bottle": "Bottled Sunlight",
     
     "advancements.melonslabs.frankenmelon.title": "The Spark Of Life",
     "advancements.melonslabs.frankenmelon.description": "Create a frankenmelon by channeling life into a half pumpkin half melon block.",
@@ -63,10 +63,15 @@
     "text.melonslabs.patchouli.multiblock_machines.lightning_collector.description": "Any lightning (channeled or natural) that tries to spawn within a 65 x 65 square centered around the $(l:multiblock_machines/lightning_collector#recipes)$(item)lightning rod block$() (and between 0 to 20 blocks below the rod) will be redirected to it.  $(br2)When lightning is redirected to the rod, any $(l:introduction/potions)$(item)living potion$() in the $(l:multiblock_machines/lightning_collector#recipes)$(item)lightning collector block$() will assimilate the lightning and become $(l:introduction/potions#lightning)$(item)bottled lightning$().",
     "text.melonslabs.patchouli.multiblock_machines.lightning_collector.description2": "You can right-click the $(l:multiblock_machines/lightning_collector#recipes)$(item)lightning rod$() to see if the structure is built properly.  $(br2)To insert a $(l:introduction/potions)$(item)living potion$() into the $(l:multiblock_machines/lightning_collector#recipes)$(item)collector$() block, simply right click it with one in your hand.  It should appear in the center of the block.  Right click the block with an empty hand to remove whatever is stored in it.",
 
+    "text.melonslabs.patchouli.multiblock_machines.sun_collector.title": "Sun Collector",
+    "text.melonslabs.patchouli.multiblock_machines.sun_collector.description": "This multiblock makes $(l:introduction/potions#sun)$(item)bottled sunlight$() by using $(l:multiblock_machines/sun_collector#recipes2)$(item)mirrors$() to focus the light of the sun onto a $(l:introduction/potions)$(item)living potion$().$(br2)To ensure enough sunlight is received, check that all four $(l:multiblock_machines/sun_collector#recipes2)$(item)mirrors$() and the $(l:multiblock_machines/sun_collector#recipes)$(item)glass case$() have a clear view of the sky and it is sunny out.  Also check that all four $(l:multiblock_machines/sun_collector#recipes2)$(item)mirrors$() were placed facing the center.",
+    "text.melonslabs.patchouli.multiblock_machines.sun_collector.description2": "You can right-click the $(l:multiblock_machines/sun_collector#recipes)$(item)glass case$() to see if the structure is built properly.  $(br2)To activate the structure, first right-click the $(l:multiblock_machines/sun_collector#recipes)$(item)pedestal$() with a $(l:introduction/potions)$(item)living potion$() in hand, then activate (right-click) each of the $(l:multiblock_machines/sun_collector#recipes2)$(item)mirrors$() in quick succession.  It may take a few a tries to activate all four $(l:multiblock_machines/sun_collector#recipes2)$(item)mirrors$() quickly enough.  $(br2)To retrieve the $(l:introduction/potions#sun)$(item)bottled sunlight$(), simply right-click the $(l:multiblock_machines/sun_collector#recipes)$(item)pedestal$() with an empty hand.",
+
     "text.melonslabs.patchouli.introduction.potions.title": "Living Potions",
     "text.melonslabs.patchouli.introduction.potions.description": "While living potions grant no effect upon consumption, these bottled souls hold the key to controlling the patterns of weather, and time itself.  $(br2)Through various multiblocks, they can assimilate natural energies and transform into various elemental bottles.",
     "text.melonslabs.patchouli.introduction.potions.elemental_bottles": "Elemental Botttles",
     "text.melonslabs.patchouli.introduction.potions.lightning_bottle":"$(d)Bottled Lightning$() is made in the $(l:multiblock_machines/lightning_collector)$(item)Lightning Collector$() multiblock.  $(br2)It can be used in the Thunderstone ritual to create the Thunderstone. $(br2)The Thunderstone can be used in the Thunderstone multiblock to release mighty storms.",
+    "text.melonslabs.patchouli.introduction.potions.sun_bottle":"$(d)Bottled Sunlight$() is made in the $(l:multiblock_machines/sun_collector)$(item)Sun Collector$() multiblock.  $(br2)It can be used in the Sunstone ritual to create the Sunstone. $(br2)The Sunstone can be used in the Sunstone multiblock calm the skies.",
 
     "item.minecraft.potion.effect.melonslabs_dead":"Dead Potion",
     "item.minecraft.splash_potion.effect.melonslabs_dead":"Dead Splash Potion",

@@ -2,7 +2,7 @@
 	"name": "text.melonslabs.patchouli.multiblock_machines.lightning_collector.title",
 	"icon": "melonslabs:lightning_rod",
 	"category": "multiblock_machines",
-	"sortnum": 0,
+	"sortnum": 1,
 	"pages": [
 		{
             "type": "text",

@@ -23,6 +23,12 @@
             "result2": "minecraft:potion#3{Potion:\"minecraft:melonslabs_living\"}"
         },
         {
+            "anchor": "sun",
+            "type": "spotlight",
+            "item": "melonslabs:sun_bottle",
+            "text": "text.melonslabs.patchouli.introduction.potions.sun_bottle"
+        },
+        {
             "anchor": "lightning",
             "type": "spotlight",
             "item": "melonslabs:lightning_bottle",

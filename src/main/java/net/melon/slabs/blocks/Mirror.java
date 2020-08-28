@@ -19,6 +19,7 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.text.LiteralText;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.BlockRotation;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
@@ -59,6 +60,11 @@ public class Mirror extends BlockWithEntity {
 
 
     @Override
+    public BlockState rotate(BlockState state, BlockRotation rotation) {
+        return (BlockState)state.with(FACING, rotation.rotate((Direction)state.get(FACING)));
+    }
+
+    @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(FACING);
     }
@@ -81,8 +87,12 @@ public class Mirror extends BlockWithEntity {
         if (pedestal.isOf(MelonSlabsBlocks.SUN_PEDESTAL)){
             if(((SunPedestal)pedestal.getBlock()).getMultiblockIntact(world, pedestalPos)){
                 if (((SunPedestal)pedestal.getBlock()).canActivateMultiblock(world, pedestalPos)){
-                    MirrorEntity blockEntity = ((MirrorEntity)world.getBlockEntity(pos));
-                    blockEntity.activate(state.get(FACING));
+                    if (world.isRaining() || world.isNight() || world.isThundering()){
+                        player.sendMessage(new LiteralText("Weather conditions unideal"), true);
+                    } else {
+                        MirrorEntity blockEntity = ((MirrorEntity)world.getBlockEntity(pos));
+                        blockEntity.activate(state.get(FACING));
+                    }
                 } else{
                     player.sendMessage(new LiteralText("No living potion in pedestal"), true);
                 }
