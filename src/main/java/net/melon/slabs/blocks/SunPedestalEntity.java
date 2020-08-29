@@ -3,7 +3,6 @@ package net.melon.slabs.blocks;
 import org.jetbrains.annotations.Nullable;
 
 import net.fabricmc.fabric.api.block.entity.BlockEntityClientSerializable;
-import net.melon.slabs.entity.DisplayItemEntity;
 import net.melon.slabs.items.MelonSlabsItems;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -28,7 +27,6 @@ import net.minecraft.world.World;
 public class SunPedestalEntity extends BlockEntity implements ImplementedInventory, SidedInventory, BlockEntityClientSerializable{
     private final DefaultedList<ItemStack> items = DefaultedList.ofSize(1, ItemStack.EMPTY);
     // private int displayEntityId;
-    private DisplayItemEntity displayItemEntity = new DisplayItemEntity(world, 0, 0, 0, ItemStack.EMPTY);
     public SunPedestalEntity() {
         super(MelonSlabsBlocks.SUN_PEDESTAL_ENTITY);
     }

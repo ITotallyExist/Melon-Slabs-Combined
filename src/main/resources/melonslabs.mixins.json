@@ -9,7 +9,8 @@
       "TridentMixin",
       "CriteriaMixin",
       "BrewingMixin",
-      "ServerWorldMixin"
+      "ServerWorldMixin",
+      "AnvilMixin"
     ],
     "client": [],
     "server": [],

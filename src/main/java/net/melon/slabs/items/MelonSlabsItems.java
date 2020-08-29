@@ -42,6 +42,9 @@ public class MelonSlabsItems {
         public static final Item LIGHTNING_BOTTLE = new LightningBottleItem(new Item.Settings().group(GROUP).rarity(Rarity.EPIC));
         public static final Item SUN_BOTTLE = new SunBottleItem(new Item.Settings().group(GROUP).rarity(Rarity.EPIC));
 
+        //tech items
+        public static final Item REDSTONE_SHARD = new RedstoneShardItem(new Item.Settings().group(GROUP));
+
         //register items
         public static void registerItems(){
             Registry.register(Registry.ITEM, "melonslabs:cactus_slab", CACTUS_SLAB);
@@ -65,5 +68,6 @@ public class MelonSlabsItems {
             Registry.register(Registry.ITEM, "melonslabs:mirror", MIRROR);
             Registry.register(Registry.ITEM, "melonslabs:glass_case", GLASS_CASE);
             Registry.register(Registry.ITEM, "melonslabs:sun_bottle", SUN_BOTTLE);
+            Registry.register(Registry.ITEM, "melonslabs:redstone_shard", REDSTONE_SHARD);
         }
 }

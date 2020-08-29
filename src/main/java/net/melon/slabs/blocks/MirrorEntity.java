@@ -3,7 +3,6 @@ package net.melon.slabs.blocks;
 import com.google.common.base.Preconditions;
 
 import net.fabricmc.fabric.api.block.entity.BlockEntityClientSerializable;
-import net.melon.slabs.entity.SunLaserEntityModel;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.client.render.entity.model.EntityModel;

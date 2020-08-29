@@ -3,7 +3,6 @@ package net.melon.slabs.blocks;
 import java.util.Random;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.melon.slabs.entity.DisplayItemEntity;
 import net.melon.slabs.items.MelonSlabsItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
