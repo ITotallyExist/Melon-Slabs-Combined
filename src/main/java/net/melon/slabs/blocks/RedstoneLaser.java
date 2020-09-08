@@ -17,7 +17,7 @@ public class RedstoneLaser extends Block{
 
     public RedstoneLaser() {
         super(FabricBlockSettings.copy(Blocks.SMOOTH_STONE));
-        this.setDefaultState((BlockState)((BlockState)this.stateManager.getDefaultState()).with(FACING, Direction.NORTH));
+        this.setDefaultState((BlockState)((BlockState)this.stateManager.getDefaultState()).with(FACING, Direction.UP));
     }
 
     @Override
@@ -26,7 +26,8 @@ public class RedstoneLaser extends Block{
     }
 
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return (BlockState)this.getDefaultState().with(FACING, ctx.getPlayerFacing().getOpposite());
+        Direction direction = ctx.getPlayerFacing().getOpposite();
+        return (BlockState)this.getDefaultState().with(FACING, ctx.getSide());
     }
 
     static{
