@@ -26,6 +26,7 @@ public class MelonSlabsBlocks {
     public static final Block SUN_PEDESTAL = new SunPedestal();
     public static final Block MIRROR = new Mirror();
     public static final Block GLASS_CASE = new GlassCase();
+    public static final Block REDSTONE_LASER = new RedstoneLaser();
 
     //block entities
     public static BlockEntityType<LightningCollectorEntity> LIGHTNING_COLLECTOR_ENTITY;
@@ -51,6 +52,7 @@ public class MelonSlabsBlocks {
         Registry.register(Registry.BLOCK, "melonslabs:sun_pedestal", SUN_PEDESTAL);
         Registry.register(Registry.BLOCK, "melonslabs:mirror", MIRROR);
         Registry.register(Registry.BLOCK, "melonslabs:glass_case", GLASS_CASE);
+        Registry.register(Registry.BLOCK, "melonslabs:redstone_laser", REDSTONE_LASER);
 
         LIGHTNING_COLLECTOR_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "melonslabs:lightning_collector", BlockEntityType.Builder.create(LightningCollectorEntity::new, LIGHTNING_COLLECTOR).build(null));
         SUN_PEDESTAL_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "melonslabs:sun_pedestal", BlockEntityType.Builder.create(SunPedestalEntity::new, SUN_PEDESTAL).build(null));

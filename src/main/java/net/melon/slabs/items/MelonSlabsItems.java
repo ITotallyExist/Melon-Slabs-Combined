@@ -33,6 +33,7 @@ public class MelonSlabsItems {
         public static final Item SUN_PEDESTAL = new BlockItem(MelonSlabsBlocks.SUN_PEDESTAL, new Item.Settings().group(GROUP));
         public static final Item MIRROR = new BlockItem(MelonSlabsBlocks.MIRROR, new Item.Settings().group(GROUP));
         public static final Item GLASS_CASE = new BlockItem(MelonSlabsBlocks.GLASS_CASE, new Item.Settings().group(GROUP));
+        public static final Item REDSTONE_LASER = new BlockItem(MelonSlabsBlocks.REDSTONE_LASER, new Item.Settings().group(GROUP));
 
         //Food Items
         public static final Item PUMPKIN_SLICE = new Item(new Item.Settings().group(GROUP).food(new FoodComponent.Builder().hunger(1).saturationModifier(0.3f).snack().build()));
@@ -69,5 +70,6 @@ public class MelonSlabsItems {
             Registry.register(Registry.ITEM, "melonslabs:glass_case", GLASS_CASE);
             Registry.register(Registry.ITEM, "melonslabs:sun_bottle", SUN_BOTTLE);
             Registry.register(Registry.ITEM, "melonslabs:redstone_shard", REDSTONE_SHARD);
+            Registry.register(Registry.ITEM, "melonslabs:redstone_laser", REDSTONE_LASER);
         }
 }

@@ -1,0 +1,5 @@
+{
+	"variants": {
+		"": { "model": "melonslabs:block/redstone_laser" }
+	}
+}
