@@ -67,6 +67,7 @@ public class MelonSlabsBlocks {
         BlockRenderLayerMap.INSTANCE.putBlock(MelonSlabsBlocks.LIGHTNING_COLLECTOR, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(MelonSlabsBlocks.MIRROR, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(MelonSlabsBlocks.GLASS_CASE, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(MelonSlabsBlocks.REDSTONE_LASER, RenderLayer.getCutout());
         // BlockRenderLayerMap.INSTANCE.putBlock(MelonSlabsBlocks.LIGHTNING_ROD, RenderLayer.getCutout());
     }
 }
