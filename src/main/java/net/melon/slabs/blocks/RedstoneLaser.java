@@ -105,7 +105,6 @@ public class RedstoneLaser extends Block{
     }
 
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        Direction direction = ctx.getPlayerFacing().getOpposite();
         return (BlockState)this.getDefaultState().with(FACING, ctx.getSide());
     }
 

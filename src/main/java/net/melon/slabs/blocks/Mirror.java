@@ -8,6 +8,7 @@ import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.FacingBlock;
 import net.minecraft.block.HorizontalFacingBlock;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.entity.BlockEntity;
@@ -31,12 +32,17 @@ import net.minecraft.world.World;
 
 public class Mirror extends BlockWithEntity {
     public static final DirectionProperty FACING;
-    public static final VoxelShape SHAPE;
+    public static final DirectionProperty SIDE;
+    public static final VoxelShape SHAPEU;
+    public static final VoxelShape SHAPED;
+    public static final VoxelShape SHAPEN;
+    public static final VoxelShape SHAPEE;
+    public static final VoxelShape SHAPES;
+    public static final VoxelShape SHAPEW;
 
     public Mirror() {
         super(FabricBlockSettings.copy(Blocks.OAK_PLANKS));
-        this.setDefaultState(
-                (BlockState) ((BlockState) this.stateManager.getDefaultState()).with(FACING, Direction.NORTH));
+        this.setDefaultState((BlockState) ((BlockState) this.stateManager.getDefaultState()).with(FACING, Direction.NORTH).with(SIDE, Direction.UP));
     }
 
     @Override
@@ -66,19 +72,60 @@ public class Mirror extends BlockWithEntity {
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(FACING);
+        builder.add(FACING,SIDE);
     }
 
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return (BlockState) this.getDefaultState().with(FACING, ctx.getPlayerFacing().getOpposite());
+        Direction side = ctx.getSide();
+        Direction direction = ctx.getPlayerFacing().getOpposite();
+
+        if (side != Direction.DOWN && side != Direction.UP){
+            if (side == direction){
+                direction = (ctx.getHitPos().y - (double)ctx.getBlockPos().getY() >= 0.5D) ? Direction.UP : Direction.DOWN;
+            }
+        }
+
+        return (BlockState) this.getDefaultState().with(FACING, direction).with(SIDE, side);
     }
 
     public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return SHAPE;
+        Direction direction = state.get(SIDE);
+        if (direction == Direction.UP){
+            return SHAPEU;
+        } else if (direction == Direction.DOWN){
+            return SHAPED;
+        } else if (direction == Direction.NORTH){
+            return SHAPEN;
+        } else if (direction == Direction.EAST){
+            return SHAPEE;
+        } else if (direction == Direction.SOUTH){
+            return SHAPES;
+        } else if (direction == Direction.WEST){
+            return SHAPEW;
+        } else {
+            //failsafe
+            return SHAPEU;
+        }
     }
 
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return SHAPE;
+        Direction direction = state.get(SIDE);
+        if (direction == Direction.UP){
+            return SHAPEU;
+        } else if (direction == Direction.DOWN){
+            return SHAPED;
+        } else if (direction == Direction.NORTH){
+            return SHAPEN;
+        } else if (direction == Direction.EAST){
+            return SHAPEE;
+        } else if (direction == Direction.SOUTH){
+            return SHAPES;
+        } else if (direction == Direction.WEST){
+            return SHAPEW;
+        } else {
+            //failsafe
+            return SHAPEU;
+        }
     }
 
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
@@ -112,8 +159,14 @@ public class Mirror extends BlockWithEntity {
     }
 
     static {
-        FACING = HorizontalFacingBlock.FACING;
-        SHAPE = Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 4.0D, 16.0D);
+        FACING = FacingBlock.FACING;
+        SHAPEU = Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 4.0D, 16.0D);
+        SHAPED = Block.createCuboidShape(0.0D, 12.0D, 0.0D, 16.0D, 16.0D, 16.0D);
+        SHAPEW = Block.createCuboidShape(12.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
+        SHAPES = Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 4.0D);
+        SHAPEE = Block.createCuboidShape(0.0D, 0.0D, 0.0D, 4.0D, 16.0D, 16.0D);
+        SHAPEN = Block.createCuboidShape(0.0D, 0.0D, 12.0D, 16.0D, 16.0D, 16.0D);
+        SIDE = DirectionProperty.of("side", Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST, Direction.UP, Direction.DOWN);
     }
 
     @Override
