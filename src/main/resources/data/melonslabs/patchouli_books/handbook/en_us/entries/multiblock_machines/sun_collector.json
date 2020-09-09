@@ -16,10 +16,10 @@
             "type": "multiblock",
             "multiblock": {
                 "mapping": {
-                    "N": "melonslabs:mirror[facing=north]",
-                    "E": "melonslabs:mirror[facing=east]",
-                    "S": "melonslabs:mirror[facing=south]",
-                    "W": "melonslabs:mirror[facing=west]",
+                    "N": "melonslabs:mirror[facing=north,side=up]",
+                    "E": "melonslabs:mirror[facing=east,side=up]",
+                    "S": "melonslabs:mirror[facing=south,side=up]",
+                    "W": "melonslabs:mirror[facing=west,side=up]",
                     "G": "melonslabs:glass_case",
                     "0": "melonslabs:sun_pedestal"
                 },

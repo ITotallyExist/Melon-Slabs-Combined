@@ -67,7 +67,34 @@ public class Mirror extends BlockWithEntity {
 
     @Override
     public BlockState rotate(BlockState state, BlockRotation rotation) {
-        return (BlockState)state.with(FACING, rotation.rotate((Direction)state.get(FACING)));
+        Direction side = state.get(SIDE);
+        Direction facing = state.get(FACING);
+        Direction returnFacing = Direction.NORTH; 
+        
+        if (side == Direction.DOWN || side == Direction.UP){
+            returnFacing = rotation.rotate((Direction)state.get(FACING));
+        } else if (side == Direction.EAST || side == Direction.WEST){
+            if (facing == Direction.NORTH){
+                returnFacing = Direction.DOWN;
+            } else if (facing == Direction.DOWN){
+                returnFacing = Direction.SOUTH;
+            } else if (facing == Direction.SOUTH){
+                returnFacing = Direction.UP;
+            } else {
+                returnFacing = Direction.NORTH;
+            }
+        } else if (side == Direction.NORTH || side == Direction.SOUTH){
+            if (facing == Direction.WEST){
+                returnFacing = Direction.DOWN;
+            } else if (facing == Direction.DOWN){
+                returnFacing = Direction.EAST;
+            } else if (facing == Direction.EAST){
+                returnFacing = Direction.UP;
+            } else {
+                returnFacing = Direction.WEST;
+            }
+        }
+        return (BlockState)state.with(FACING,returnFacing);
     }
 
     @Override

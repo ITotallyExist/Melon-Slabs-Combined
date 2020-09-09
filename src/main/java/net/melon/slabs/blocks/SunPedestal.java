@@ -142,7 +142,8 @@ public class SunPedestal extends BlockWithEntity{
         if (!world.isAir(pos.up().north(3))){return false;}
         BlockState northMirror = world.getBlockState(pos.up().north(4));
         if (!northMirror.isOf(MelonSlabsBlocks.MIRROR)){return false;}
-        if (northMirror.get(FACING) != Direction.SOUTH){return false;}
+        if (northMirror.get(Mirror.FACING) != Direction.SOUTH){return false;}
+        if (northMirror.get(Mirror.SIDE) != Direction.UP){return false;}
         if (!world.isSkyVisible(pos.up().north(4))){return false;}
 
         //east arm
@@ -151,7 +152,8 @@ public class SunPedestal extends BlockWithEntity{
         if (!world.isAir(pos.up().east(3))){return false;}
         BlockState eastMirror = world.getBlockState(pos.up().east(4));
         if (!eastMirror.isOf(MelonSlabsBlocks.MIRROR)){return false;}
-        if (eastMirror.get(FACING) != Direction.WEST){return false;}
+        if (eastMirror.get(Mirror.FACING) != Direction.WEST){return false;}
+        if (eastMirror.get(Mirror.SIDE) != Direction.UP){return false;}
         if (!world.isSkyVisible(pos.up().east(4))){return false;}
 
         //south arm
@@ -160,7 +162,8 @@ public class SunPedestal extends BlockWithEntity{
         if (!world.isAir(pos.up().south(3))){return false;}
         BlockState southMirror = world.getBlockState(pos.up().south(4));
         if (!southMirror.isOf(MelonSlabsBlocks.MIRROR)){return false;}
-        if (southMirror.get(FACING) != Direction.NORTH){return false;}
+        if (southMirror.get(Mirror.FACING) != Direction.NORTH){return false;}
+        if (southMirror.get(Mirror.SIDE) != Direction.UP){return false;}
         if (!world.isSkyVisible(pos.up().south(4))){return false;}
 
         //west arm
@@ -169,7 +172,8 @@ public class SunPedestal extends BlockWithEntity{
         if (!world.isAir(pos.up().west(3))){return false;}
         BlockState westMirror = world.getBlockState(pos.up().west(4));
         if (!westMirror.isOf(MelonSlabsBlocks.MIRROR)){return false;}
-        if (westMirror.get(FACING) != Direction.EAST){return false;}
+        if (westMirror.get(Mirror.FACING) != Direction.EAST){return false;}
+        if (westMirror.get(Mirror.SIDE) != Direction.UP){return false;}
         if (!world.isSkyVisible(pos.up().west(4))){return false;}
 
         return true;
