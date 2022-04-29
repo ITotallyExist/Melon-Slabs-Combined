@@ -1,3 +1,5 @@
+##This is an old copdebase, the mod has been split into three parts for easier maintenance, the base mod which adds melon slabs, and two addons which add magic systems
+
 ### Lightweight vanilla+ mod for fabric.
 
 #### Current Features:
